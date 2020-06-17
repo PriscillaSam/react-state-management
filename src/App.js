@@ -1,26 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useReducer } from "react";
+import GrudgeList from "./components/GrudgeList";
+import NewGrudge from "./components/NewGrudge";
 
-function App() {
+import grudges from "./utils/grudges";
+import reducer from "./reducer";
+
+import "./App.css";
+
+const App = () => {
+  const [state, dispatch] = useReducer(reducer, grudges);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NewGrudge addGrudge={dispatch} />
+      <GrudgeList grudges={state} editGrudge={dispatch} />
     </div>
   );
-}
+};
 
 export default App;

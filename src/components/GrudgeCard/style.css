@@ -1,0 +1,18 @@
+.GrudgeCard {
+  border: 1px solid;
+  padding: 10px;
+  text-align: left;
+  margin-bottom: 10px;
+  border-radius: 3px;
+}
+.GrudgeCard p {
+  margin: 5px 0;
+}
+
+.GrudgeCard-person {
+  font-weight: bold;
+}
+
+.GrudgeCard-reason {
+  font-size: 0.9em;
+}
