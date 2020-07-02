@@ -1,19 +1,17 @@
-import React, { useReducer } from "react";
+import React from "react";
 import GrudgeList from "./components/GrudgeList";
 import NewGrudge from "./components/NewGrudge";
 
-import grudges from "./utils/grudges";
-import reducer from "./reducer";
-
 import "./App.css";
+import GrudgeProvider from "./components/GrudgeContext";
 
 const App = () => {
-  const [state, dispatch] = useReducer(reducer, grudges);
-
   return (
     <div className="App">
-      <NewGrudge addGrudge={dispatch} />
-      <GrudgeList grudges={state} editGrudge={dispatch} />
+      <GrudgeProvider>
+        <NewGrudge />
+        <GrudgeList />
+      </GrudgeProvider>
     </div>
   );
 };

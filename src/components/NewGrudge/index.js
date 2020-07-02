@@ -1,24 +1,17 @@
 import React, { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
+
+import { GrudgeContext } from "../GrudgeContext";
 
 import "./style.css";
 
 const NewGrudge = React.memo(props => {
   const [person, setPerson] = useState("");
   const [reason, setReason] = useState("");
+  const { addGrudge } = React.useContext(GrudgeContext);
 
   const handleSetPerson = event => setPerson(event.target.value);
   const handleSetReason = event => setReason(event.target.value);
-  const handleSubmit = () => {
-    const newGrudge = {
-      id: uuidv4(),
-      person,
-      reason,
-      forgiven: false
-    };
-
-    props.addGrudge({ type: "ADD_GRUDGE", payload: newGrudge });
-  };
+  const handleSubmit = () => addGrudge({ person, reason });
 
   return (
     <div className="NewGrudge">

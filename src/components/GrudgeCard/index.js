@@ -1,14 +1,12 @@
 import React from "react";
 
 import "./style.css";
+import { GrudgeContext } from "../GrudgeContext";
 
-const GrudgeCard = React.memo(props => {
-  const handleOnChange = () => {
-    props.editGrudge({
-      type: "EDIT_GRUDGE",
-      payload: { id: props.grudge.id }
-    });
-  };
+const GrudgeCard = props => {
+  const { editGrudge } = React.useContext(GrudgeContext);
+
+  const handleOnChange = () => editGrudge(props.grudge.id);
 
   return (
     <div className="GrudgeCard">
@@ -24,6 +22,6 @@ const GrudgeCard = React.memo(props => {
       </label>
     </div>
   );
-});
+};
 
 export default GrudgeCard;

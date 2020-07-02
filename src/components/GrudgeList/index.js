@@ -1,20 +1,20 @@
 import React from "react";
 import GrudgeCard from "../GrudgeCard";
 
+import { GrudgeContext } from "../GrudgeContext";
 import "./style.css";
 
-const GrudgeList = props => {
+const GrudgeList = () => {
+  const { grudges } = React.useContext(GrudgeContext);
+
   return (
     <div className="GrudgeList">
-      <h1>Grudges - {props.grudges.length}</h1>
-      {props.grudges.map(grudge => (
-        <GrudgeCard
-          grudge={grudge}
-          editGrudge={props.editGrudge}
-          key={grudge.id}
-        />
+      <h1>Grudges - {grudges.length}</h1>
+      {grudges.map(grudge => (
+        <GrudgeCard grudge={grudge} key={grudge.id} />
       ))}
     </div>
   );
 };
+
 export default GrudgeList;
