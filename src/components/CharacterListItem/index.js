@@ -1,9 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const CharacterListItem = ({ character }) => {
+import "./style.css";
+
+const CharacterListItem = ({ character, match }) => {
+  const isActive = character.id === match.params.id;
+
   return (
-    <li>
-      <button>{character.name}</button>
+    <li className="CharacterListItem">
+      <Link to={`/characters/${character.id}`}>{character.name}</Link>
     </li>
   );
 };

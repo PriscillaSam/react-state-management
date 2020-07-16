@@ -27,7 +27,7 @@ const App = () => {
               <GrudgeList />
             </GrudgeProvider>
           </Route>
-          <Route exact path="/characters">
+          <Route path="/characters">
             <CharactersList />
           </Route>
         </Switch>
