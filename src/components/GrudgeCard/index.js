@@ -15,7 +15,7 @@ const GrudgeCard = props => {
       <label>
         <input
           type="checkbox"
-          checked={props.grudge.isForgiven}
+          checked={props.grudge.forgiven}
           onChange={handleOnChange}
         />
         Forgiven

@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
 import GrudgeList from "./components/GrudgeList";
 import NewGrudge from "./components/NewGrudge";
 
 import "./App.css";
-import GrudgeProvider from "./components/GrudgeContext";
+import { GrudgeContext } from "./components/GrudgeContext";
 import CharactersList from "./components/CharactersList";
 
 const App = () => {
+  const { hasPast, hasFuture, undo, redo } = useContext(GrudgeContext);
+
   return (
     <Router>
       <div className="App">
@@ -22,10 +24,16 @@ const App = () => {
 
         <Switch>
           <Route exact path="/">
-            <GrudgeProvider>
-              <NewGrudge />
-              <GrudgeList />
-            </GrudgeProvider>
+            <NewGrudge />
+            <section>
+              <button disabled={!hasPast} onClick={undo}>
+                Undo
+              </button>
+              <button disabled={!hasFuture} onClick={redo}>
+                Redo
+              </button>
+            </section>
+            <GrudgeList />
           </Route>
           <Route path="/characters">
             <CharactersList />
